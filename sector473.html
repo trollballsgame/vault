@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enter code</title>
+</head>
+<body>
+    <a class="italic" href="index.html">back</a>
+    <h1>welcome to sector 473.</h1>
+    <p>beyond here lies secrets even admins dont know</p>
+    <h2>1. 000000 / abomination apearance</h2>
+    <h3>abomination v1</h3>
+    <svg>
+        <circle cx="50" cy="50" r="40" stroke="gray" stroke-width="3" fill="black"/>
+    </svg>
+    <h3>abomination v2</h3>
+    <img src="abomination.png" width="100px" height="100px">
+    <h2>2. 000002 / [ REDACTED ] member info</h2>
+    <h3>banned for power abuse along with 000000</h3>
+    <h2>tb logo</h2>
+    <img src="logo.png" width="100px" height="100px">
+    <h2>theglorioushotdog / tghd</h2>
+    <br><img src="theglorioushotdog.png" width="100px" height="100px">
+    <h2>thealmightymangocrab / tamc</h2>
+    <img src="thealmightymangocrab.png" width="100px" height="100px">
+    <a class="italic" href="https://www.google.com/search?q=emoji+kitchen&oq=emoji+kitchen">both are made in emoji kitchen (click)</a>
+    <input id="cmd" placeholder='news:add("Stat1k is back")' style="width:300px;">
+    <button onclick="sendNews()">Submit</button>
+    <p id="status"></p>
+
+    <script>
+      function sendNews() {
+        const cmd = document.getElementById("cmd").value;
+        fetch('/api/news', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ command: cmd })
+        })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("status").textContent = data.message || data.error;
+          console.log("✅ Server response:", data);
+        })
+        .catch(err => {
+          document.getElementById("status").textContent = "⚠️ Failed to send news.";
+          console.error("❌ Request error:", err);
+        });
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+body {
+    background-image: linear-gradient(to right, #ff3300, #f76b00, #ff9900, #ffcc00, #ffff00);
+}
+table, tr, td {
+    border: 5px solid #000;
+}
+.italic {
+    font-style: italic;
+}

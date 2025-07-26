@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trollballs News</title>
+</head>
+<body>
+  <h1>📰 Trollballs News</h1>
+  <ul id="newsList"></ul>
+
+  <script>
+    fetch('/api/news')
+      .then(res => res.json())
+      .then(news => {
+        const ul = document.getElementById('newsList');
+        news.forEach(entry => {
+          const li = document.createElement('li');
+          li.textContent = entry;
+          ul.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
